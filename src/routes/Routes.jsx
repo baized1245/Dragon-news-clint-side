@@ -8,6 +8,8 @@ import { useParams, Navigate } from "react-router-dom";
 import LoginLayout from "../layout/LoginLayout";
 import Login from "../pages/Login/Login/Login";
 import Register from "../pages/Login/Register/Register";
+import PrivetRoute from "./PrivetRoute";
+import TermsAndConditions from "../Shered/Terms&conditions/TermsAndConditions";
 
 
 const router = createBrowserRouter([
@@ -26,6 +28,10 @@ const router = createBrowserRouter([
         {
           path: 'register',
           element: <Register></Register>  
+        },
+        {
+          path: 'termsandconditions',
+          element: <TermsAndConditions></TermsAndConditions>
         }
        ]
     },
@@ -48,7 +54,7 @@ const router = createBrowserRouter([
       children: [
         {
             path: ':id',
-            element: <News></News>,
+            element: <PrivetRoute><News></News></PrivetRoute>,
             loader: ({params}) => fetch(`http://localhost:5000/news/${params.id}`)
         }
       ]  
